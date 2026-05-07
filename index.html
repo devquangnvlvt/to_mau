@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Pixel Art Color by Number</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+
+<body>
+    <div id="app">
+        <!-- Main Menu / Gallery -->
+        <section id="gallery-view" class="view active">
+            <header class="glass-header">
+                <div class="header-top">
+                    <h1>Pixel Art Pro</h1>
+                    <button id="upload-btn" class="ai-btn" title="Tải ảnh từ máy">
+                        <span>Upload</span>
+                    </button>
+                    <input type="file" id="image-upload" accept="image/*" hidden>
+                </div>
+                <div class="tabs">
+                    <button class="tab-btn active" data-category="all">Tất cả</button>
+                    <button class="tab-btn" data-category="animal">Động vật</button>
+                    <button class="tab-btn" data-category="food">Thực phẩm</button>
+                    <button class="tab-btn" data-category="human">Con người</button>
+                    <button class="tab-btn" data-category="monster">Quái vật</button>
+                    <button class="tab-btn" data-category="plant">Thực vật</button>
+                    <button class="tab-btn" data-category="vehicle">Xe cộ</button>
+                    <button class="tab-btn" data-category="christmas">Giáng sinh</button>
+                    <button class="tab-btn" data-category="halloween">Halloween</button>
+                    <button class="tab-btn" data-category="random">Ngẫu nhiên</button>
+                </div>
+            </header>
+            <div id="gallery-grid" class="gallery-grid">
+                <!-- Data injected by JS -->
+                <div class="loading-spinner">Đang tải dữ liệu...</div>
+            </div>
+        </section>
+
+        <!-- Game Interface -->
+        <section id="game-view" class="view">
+            <nav class="game-nav glass-nav">
+                <button id="back-btn" class="icon-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <div id="progress-container">
+                    <div id="progress-bar"></div>
+                    <span id="progress-text">0%</span>
+                </div>
+                <button id="zoom-reset-btn" class="icon-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8" />
+                        <path d="m21 21-4.3-4.3" />
+                        <path d="M8 11h6" />
+                    </svg>
+                </button>
+            </nav>
+
+            <div id="game-canvas-container">
+                <canvas id="game-canvas"></canvas>
+                <div id="mini-map-container">
+                    <canvas id="mini-map-canvas"></canvas>
+                </div>
+            </div>
+
+            <div id="tool-shelf" class="tool-shelf">
+                <button id="tool-wand" class="tool-btn" title="Magic Wand">
+                    <span>vẽ</span>
+                </button>
+                <button id="tool-bomb" class="tool-btn" title="Explosive Bomb">
+                    <span>boom</span>
+                </button>
+                <button id="tool-hint" class="tool-btn" title="Hint">
+                    <span>kính</span>
+                </button>
+            </div>
+
+            <footer class="color-palette-footer glass-footer">
+                <div id="palette-scroll" class="palette-scroll">
+                    <!-- Palette injected by JS -->
+                </div>
+            </footer>
+        </section>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="success-overlay" class="overlay">
+        <div class="modal glass-modal">
+            <h2>Hoàn thành!</h2>
+            <div id="result-preview"></div>
+            <button id="next-btn" class="primary-btn">Tiếp theo</button>
+            <button id="close-modal-btn" class="secondary-btn">Quay lại</button>
+        </div>
+    </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
