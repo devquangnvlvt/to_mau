@@ -162,11 +162,11 @@
         }
 
         .level-card.completed::after {
-            content: 'âœ…';
+            content: '✓';
             position: absolute;
             top: 5px;
             right: 5px;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(18, 41, 243, 0.9);
             border-radius: 50%;
             width: 24px;
             height: 24px;

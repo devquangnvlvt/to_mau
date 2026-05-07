@@ -46,7 +46,6 @@ async function init() {
   renderGallery();
   setupEventListeners();
   setupImageUpload();
-  setupImageUpload();
   setupResizeObserver();
 
   // Add page visibility listener for forced save
@@ -907,7 +906,7 @@ document.querySelectorAll(".tab-btn").forEach((btn) => {
   };
 });
 
-// // Logic tô màu
+// Logic tô màu
 function paintPixel(screenX, screenY) {
   if (!appState.currentLevel) return;
 
@@ -926,14 +925,14 @@ function paintPixel(screenX, screenY) {
     y < appState.currentLevel.height
   ) {
     if (appState.selectedTool === "wand") {
-      useMagicWand(x, y);
+      useMagicWand(x, y); // vẽ  lan theo số tool-wand
       appState.selectedTool = null;
       updateToolUI();
       return;
     }
 
     if (appState.selectedTool === "bomb") {
-      useBomb(x, y);
+      useBomb(x, y); // boom nổ  tool-bomb
       appState.selectedTool = null;
       updateToolUI();
       return;
@@ -960,6 +959,7 @@ function paintPixel(screenX, screenY) {
         triggerHaptic();
         SoundManager.playPop();
         updateProgress();
+        checkWin(); // Kiểm tra win sau khi tô màu
       }
     }
   }
@@ -970,7 +970,7 @@ function triggerHaptic() {
     navigator.vibrate(15);
   }
 }
-
+// vẽ
 function useMagicWand(startX, startY) {
   const targetColorId = appState.currentLevel.grid[startY][startX];
   if (targetColorId === 0) return;
@@ -1008,9 +1008,10 @@ function useMagicWand(startX, startY) {
   if (navigator.vibrate) navigator.vibrate([30, 50, 30]);
   SoundManager.playPop();
   updateProgress();
-  checkWin(); // Check for win after using a tool
+  checkWin(); // Kiểm tra win sau khi dùng công cụ
 }
 
+// boom nổ
 function useBomb(centerX, centerY) {
   const radius = 3; // 7x7 area
   let count = 0;
